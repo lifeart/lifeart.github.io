@@ -3,13 +3,55 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Alex Kanunnikov - Staff Frontend Engineer, Ember.js Core Contributor. Building frameworks, compilers, and developer tools that power modern web applications.">
+  <meta name="description" content="Alex Kanunnikov - Lead Frontend Engineer with 15+ years experience. Specializing in performance optimization, developer tooling, and helping teams ship better products faster.">
+  <meta name="keywords" content="Frontend Engineer, TypeScript, Ember.js, React, Performance, Developer Tools, Staff Engineer">
+  <meta name="author" content="Alex Kanunnikov">
   <meta name="yandex-verification" content="a626dfe67f8aa3ea">
-  <title>Alex Kanunnikov | Staff Frontend Engineer</title>
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="profile">
+  <meta property="og:title" content="Alex Kanunnikov | Lead Frontend Engineer">
+  <meta property="og:description" content="15+ years shipping products at scale. Framework architect, performance expert, and open source maintainer.">
+  <meta property="og:url" content="https://lifeart.github.io/">
+  <meta property="og:site_name" content="Alex Kanunnikov">
+  <meta property="profile:first_name" content="Alex">
+  <meta property="profile:last_name" content="Kanunnikov">
+
+  <!-- Twitter/X Card -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="@vaier">
+  <meta name="twitter:title" content="Alex Kanunnikov | Lead Frontend Engineer">
+  <meta name="twitter:description" content="15+ years shipping products at scale. Framework architect, performance expert, and open source maintainer.">
+
+  <title>Alex Kanunnikov | Lead Frontend Engineer</title>
+  <link rel="canonical" href="https://lifeart.github.io/">
+  <link rel="icon" href="/favicon.ico" sizes="any">
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
   <link rel="manifest" href="/site.webmanifest">
+
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Alex Kanunnikov",
+    "jobTitle": "Lead Frontend Engineer",
+    "worksFor": {
+      "@type": "Organization",
+      "name": "EPAM Systems"
+    },
+    "url": "https://lifeart.github.io/",
+    "sameAs": [
+      "https://github.com/lifeart",
+      "https://www.linkedin.com/in/ilifeart/",
+      "https://x.com/vaier"
+    ],
+    "knowsAbout": ["TypeScript", "JavaScript", "Ember.js", "React", "Performance Optimization", "Developer Tools"],
+    "alumniOf": "Saint Petersburg State Electrotechnical University"
+  }
+  </script>
   <style>
     :root {
       --bg-primary: #0a0a0f;
@@ -162,6 +204,34 @@
       50% { opacity: 0.5; }
     }
 
+    /* Accessibility: Reduced motion */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+      html {
+        scroll-behavior: auto;
+      }
+    }
+
+    /* Skip link for accessibility */
+    .skip-link {
+      position: absolute;
+      top: -40px;
+      left: 0;
+      background: var(--accent);
+      color: #fff;
+      padding: 0.5rem 1rem;
+      z-index: 100;
+      border-radius: 0 0 0.5rem 0;
+    }
+
+    .skip-link:focus {
+      top: 0;
+    }
+
     .social-links {
       display: flex;
       flex-wrap: wrap;
@@ -184,9 +254,49 @@
       border-bottom-color: var(--accent-light);
     }
 
+    /* Highlights */
+    .highlights {
+      margin-bottom: 2.5rem;
+    }
+
+    .highlights-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+    }
+
+    .highlight-item {
+      text-align: center;
+      padding: 1.25rem 0.5rem;
+      background: var(--bg-secondary);
+      border: 1px solid var(--border);
+      border-radius: 0.75rem;
+    }
+
+    .highlight-number {
+      display: block;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--accent-light);
+      margin-bottom: 0.25rem;
+    }
+
+    .highlight-label {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    @media (max-width: 640px) {
+      .highlights-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
     /* Skills */
     .skills {
-      margin-bottom: 3rem;
+      margin-bottom: 2rem;
     }
 
     .section-label {
@@ -276,6 +386,9 @@
       transition: all 0.3s ease;
       position: relative;
       overflow: hidden;
+      min-height: 140px;
+      display: flex;
+      flex-direction: column;
     }
 
     .project-card::before {
@@ -332,6 +445,7 @@
       color: var(--text-secondary);
       line-height: 1.5;
       margin-bottom: 0.75rem;
+      flex-grow: 1;
     }
 
     .project-card .tech {
@@ -350,6 +464,30 @@
       font-size: 0.85rem;
     }
 
+    footer .cta {
+      font-size: 1.25rem;
+      color: var(--text-primary);
+      margin-bottom: 1.25rem;
+    }
+
+    footer .cta-button {
+      display: inline-block;
+      background: linear-gradient(135deg, var(--accent), var(--accent-light));
+      color: #fff;
+      padding: 0.75rem 2rem;
+      border-radius: 0.5rem;
+      font-weight: 500;
+      font-size: 1rem;
+      margin-bottom: 2rem;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    footer .cta-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 20px var(--accent-glow);
+      color: #fff;
+    }
+
     footer .links {
       display: flex;
       justify-content: center;
@@ -366,8 +504,9 @@
       color: var(--accent-light);
     }
 
-    footer p {
+    footer .copyright {
       color: var(--text-muted);
+      font-size: 0.8rem;
     }
 
     /* Print styles */
@@ -428,222 +567,162 @@
   </style>
 </head>
 <body>
+  <a href="#projects" class="skip-link">Skip to projects</a>
   <div class="container">
     <header class="header">
       <h1>Alex Kanunnikov</h1>
-      <p class="role">Staff Frontend Engineer</p>
-      <p class="tagline">Building the future of Ember.js. Framework architect, compiler enthusiast, and open source maintainer with 10+ years shipping products at Fortune 500 companies. From startups to enterprise scale.</p>
+      <p class="role">Lead Frontend Engineer</p>
+      <p class="tagline">I help teams ship better products faster. 15+ years building performance-critical applications, developer tools, and frameworks for Fortune 500 clients. Turning complex problems into clean, maintainable code.</p>
       <div class="meta">
-        <span class="location">Remote / Nomad</span>
+        <span class="location">Batumi, Georgia / Remote</span>
         <span class="badge">Available for hire</span>
       </div>
       <div class="social-links">
-        <a href="https://github.com/lifeart">GitHub @lifeart</a>
-        <a href="https://www.linkedin.com/in/ilifeart/">LinkedIn</a>
-        <a href="https://x.com/vaier">X @vaier</a>
+        <a href="https://github.com/lifeart" target="_blank" rel="noopener noreferrer">GitHub @lifeart</a>
+        <a href="https://www.linkedin.com/in/ilifeart/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <a href="https://x.com/vaier" target="_blank" rel="noopener noreferrer">X @vaier</a>
       </div>
     </header>
 
+    <section class="highlights">
+      <h2 class="section-label">Highlights</h2>
+      <div class="highlights-grid">
+        <div class="highlight-item">
+          <span class="highlight-number">15+</span>
+          <span class="highlight-label">Years Experience</span>
+        </div>
+        <div class="highlight-item">
+          <span class="highlight-number">250+</span>
+          <span class="highlight-label">Open Source Repos</span>
+        </div>
+        <div class="highlight-item">
+          <span class="highlight-number">500+</span>
+          <span class="highlight-label">LinkedIn Connections</span>
+        </div>
+        <div class="highlight-item">
+          <span class="highlight-number">F500</span>
+          <span class="highlight-label">Consulting Experience</span>
+        </div>
+      </div>
+    </section>
+
     <section class="skills">
-      <h2 class="section-label">Core Skills</h2>
+      <h2 class="section-label">Technical Expertise</h2>
       <div class="skill-tags">
         <span class="skill-tag primary">TypeScript</span>
         <span class="skill-tag primary">JavaScript</span>
         <span class="skill-tag primary">Ember.js</span>
-        <span class="skill-tag primary">Glimmer</span>
         <span class="skill-tag primary">Node.js</span>
         <span class="skill-tag">React</span>
         <span class="skill-tag">Vue</span>
-      </div>
-    </section>
-
-    <section class="skills">
-      <h2 class="section-label">Build Tools & DX</h2>
-      <div class="skill-tags">
         <span class="skill-tag">Vite</span>
         <span class="skill-tag">Webpack</span>
-        <span class="skill-tag">Babel</span>
-        <span class="skill-tag">PostCSS</span>
-        <span class="skill-tag">Tailwind CSS</span>
-        <span class="skill-tag">ESLint</span>
-        <span class="skill-tag">LSP</span>
-        <span class="skill-tag">Hot Module Reloading</span>
       </div>
     </section>
 
     <section class="skills">
-      <h2 class="section-label">Specialized</h2>
+      <h2 class="section-label">Specializations</h2>
       <div class="skill-tags">
-        <span class="skill-tag">AST Transformation</span>
-        <span class="skill-tag">Compiler Development</span>
-        <span class="skill-tag">WebGL</span>
-        <span class="skill-tag">Canvas API</span>
-        <span class="skill-tag">Web Workers</span>
-        <span class="skill-tag">WebCodecs</span>
-        <span class="skill-tag">Binary Parsing</span>
-        <span class="skill-tag">FFmpeg</span>
+        <span class="skill-tag">Performance Optimization</span>
+        <span class="skill-tag">Developer Tooling</span>
+        <span class="skill-tag">AST & Compilers</span>
+        <span class="skill-tag">WebGL / Canvas</span>
+        <span class="skill-tag">LSP Development</span>
+        <span class="skill-tag">Testing (Jest, Playwright)</span>
       </div>
     </section>
 
-    <section class="skills">
-      <h2 class="section-label">Testing</h2>
-      <div class="skill-tags">
-        <span class="skill-tag">Jest</span>
-        <span class="skill-tag">Vitest</span>
-        <span class="skill-tag">Playwright</span>
-        <span class="skill-tag">QUnit</span>
-      </div>
-    </section>
-
-    <section class="projects-section">
-      <h2 class="section-title">Projects</h2>
+    <section class="projects-section" id="projects">
+      <h2 class="section-title">Featured Projects</h2>
 
       <div class="category">
-        <h3 class="category-title">Framework Innovation</h3>
+        <h3 class="category-title">Framework & Core Tools</h3>
         <div class="projects-grid">
           <article class="project-card">
             <span class="year">2023</span>
-            <h3><a href="https://github.com/lifeart/glimmer-next">glimmer-next (GXT)</a></h3>
+            <h3><a href="https://github.com/lifeart/glimmer-next" target="_blank" rel="noopener noreferrer">glimmer-next (GXT)</a></h3>
             <p class="description">Next-gen Glimmer VM runtime. 5x smaller bundle (7kb gzipped), same powerful templating.</p>
-            <span class="tech">TypeScript, Vite, Tailwind, Playwright, SSR</span>
+            <span class="tech">TypeScript, Vite, SSR, Reactive Rendering</span>
           </article>
           <article class="project-card">
             <span class="year">2023</span>
-            <h3><a href="https://github.com/lifeart/demo-ember-vite">demo-ember-vite</a></h3>
+            <h3><a href="https://github.com/lifeart/demo-ember-vite" target="_blank" rel="noopener noreferrer">demo-ember-vite</a></h3>
             <p class="description">Pioneered Ember.js on Vite. Instant HMR, modern DX, proving new build paradigms.</p>
-            <span class="tech">Ember.js, Vite, TypeScript, Tailwind, Playwright</span>
+            <span class="tech">Ember.js, Vite, TypeScript, Playwright</span>
           </article>
           <article class="project-card">
-            <span class="year">2020</span>
-            <h3><a href="https://github.com/lifeart/glimmer-composition-api">glimmer-composition-api</a></h3>
-            <p class="description">Bridging ecosystems: Vue's Composition API patterns for Glimmer/Ember developers.</p>
-            <span class="tech">JavaScript, Ember CLI, Reactive Primitives</span>
+            <span class="year">2019</span>
+            <h3><a href="https://github.com/lifeart/ember-language-server" target="_blank" rel="noopener noreferrer">ember-language-server</a></h3>
+            <p class="description">IDE intelligence for Ember developers. Autocomplete, go-to-definition, diagnostics.</p>
+            <span class="tech">TypeScript, LSP, Webpack, Jest, AST</span>
           </article>
         </div>
       </div>
 
       <div class="category">
-        <h3 class="category-title">Developer Tools</h3>
+        <h3 class="category-title">Developer Experience</h3>
         <div class="projects-grid">
           <article class="project-card">
-            <span class="year">2019</span>
-            <h3><a href="https://github.com/lifeart/ember-language-server">ember-language-server</a></h3>
-            <p class="description">Powering IDE intelligence for thousands of Ember developers. Autocomplete, go-to-definition, and more.</p>
-            <span class="tech">TypeScript, LSP, Webpack, Jest, AST</span>
-          </article>
-          <article class="project-card">
             <span class="year">2024</span>
-            <h3><a href="https://github.com/lifeart/code2prompt">code2prompt</a></h3>
+            <h3><a href="https://github.com/lifeart/code2prompt" target="_blank" rel="noopener noreferrer">code2prompt</a></h3>
             <p class="description">Turn codebases into LLM-ready prompts. Ship AI features faster with structured context.</p>
             <span class="tech">TypeScript, Vite, Tailwind, GitHub API</span>
           </article>
           <article class="project-card">
-            <span class="year">2016</span>
-            <h3><a href="https://github.com/ember-template-lint/ember-template-lint">ember-template-lint</a></h3>
-            <p class="description">Core contributor to the official Ember template linter. Catching bugs before they ship.</p>
-            <span class="tech">JavaScript, AST, Template Parsing</span>
-          </article>
-        </div>
-      </div>
-
-      <div class="category">
-        <h3 class="category-title">Ember.js Addons</h3>
-        <div class="projects-grid">
-          <article class="project-card">
             <span class="year">2019</span>
-            <h3><a href="https://github.com/lifeart/ember-ref-modifier">ember-ref-modifier</a></h3>
+            <h3><a href="https://github.com/lifeart/ember-ref-modifier" target="_blank" rel="noopener noreferrer">ember-ref-modifier</a></h3>
             <p class="description">React-style refs for Ember. Direct DOM access with a familiar, intuitive API.</p>
             <span class="tech">JavaScript, Ember Modifiers, DOM API</span>
           </article>
           <article class="project-card">
-            <span class="year">2020</span>
-            <h3><a href="https://github.com/lifeart/ember-click-outside-modifier">ember-click-outside-modifier</a></h3>
-            <p class="description">Detect clicks outside elements. Essential for modals, dropdowns, and popovers.</p>
-            <span class="tech">TypeScript, Embroider, Glint, GTS</span>
-          </article>
-          <article class="project-card">
-            <span class="year">2019</span>
-            <h3><a href="https://github.com/lifeart/ember-cli-jsx-templates">ember-cli-jsx-templates</a></h3>
-            <p class="description">Write Ember templates in TSX/JSX. Full type safety meets expressive templating.</p>
-            <span class="tech">TypeScript, Broccoli, AST, JSX Transpilation</span>
-          </article>
-          <article class="project-card">
             <span class="year">2018</span>
-            <h3><a href="https://github.com/lifeart/ember-ast-hot-load">ember-ast-hot-load</a></h3>
+            <h3><a href="https://github.com/lifeart/ember-ast-hot-load" target="_blank" rel="noopener noreferrer">ember-ast-hot-load</a></h3>
             <p class="description">Hot reload everything: components, routes, helpers. No refresh, no lost state.</p>
             <span class="tech">JavaScript, AST Transformation, HMR</span>
           </article>
           <article class="project-card">
-            <span class="year">2020</span>
-            <h3><a href="https://github.com/lifeart/ember-blurhash">ember-blurhash</a></h3>
-            <p class="description">Beautiful image placeholders using BlurHash. Smooth loading, better UX.</p>
-            <span class="tech">JavaScript, Canvas API, CSS Variables</span>
+            <span class="year">2017</span>
+            <h3><a href="https://github.com/lifeart/dom-snapshot" target="_blank" rel="noopener noreferrer">dom-snapshot</a></h3>
+            <p class="description">Capture and restore DOM state as JSON. Perfect for testing, debugging, time-travel.</p>
+            <span class="tech">TypeScript, Babel, DOM Serialization</span>
           </article>
         </div>
       </div>
 
       <div class="category">
-        <h3 class="category-title">Utilities & Libraries</h3>
-        <div class="projects-grid">
-          <article class="project-card">
-            <span class="year">2017</span>
-            <h3><a href="https://github.com/lifeart/dom-snapshot">dom-snapshot</a></h3>
-            <p class="description">Capture and restore DOM state as JSON. Perfect for testing, debugging, and time-travel.</p>
-            <span class="tech">TypeScript, Babel, Firebase, DOM Serialization</span>
-          </article>
-          <article class="project-card">
-            <span class="year">2017</span>
-            <h3><a href="https://github.com/lifeart/demo-async-dom">demo-async-dom</a></h3>
-            <p class="description">Offload DOM operations to Web Workers. Experimental async rendering patterns.</p>
-            <span class="tech">JavaScript, Web Workers, Performance</span>
-          </article>
-          <article class="project-card">
-            <span class="year">2023</span>
-            <h3><a href="https://github.com/lifeart/sm-annotate">sm-annotate</a></h3>
-            <p class="description">Vector-based annotation for video and images. Draw, markup, and collaborate.</p>
-            <span class="tech">TypeScript, Vitest, FFmpeg WASM, Zero-deps</span>
-          </article>
-          <article class="project-card">
-            <span class="year">2025</span>
-            <h3><a href="https://github.com/lifeart/revamp">revamp</a></h3>
-            <p class="description">Proxy server for legacy browser support. Ship modern code everywhere.</p>
-            <span class="tech">TypeScript, Babel, PostCSS, Sharp, Worker Pools</span>
-          </article>
-        </div>
-      </div>
-
-      <div class="category">
-        <h3 class="category-title">Media & Creative</h3>
+        <h3 class="category-title">Media & Graphics</h3>
         <div class="projects-grid">
           <article class="project-card">
             <span class="year">2026</span>
-            <h3><a href="https://github.com/lifeart/openrv-web">openrv-web</a></h3>
-            <p class="description">Open RV player for the web. Professional media review in the browser.</p>
-            <span class="tech">TypeScript, WebGL2, Canvas, Vite, Playwright</span>
+            <h3><a href="https://github.com/lifeart/openrv-web" target="_blank" rel="noopener noreferrer">openrv-web</a></h3>
+            <p class="description">Open RV player for the web. Professional VFX media review in the browser.</p>
+            <span class="tech">TypeScript, WebGL2, Canvas, Vite</span>
           </article>
           <article class="project-card">
             <span class="year">2026</span>
-            <h3><a href="https://github.com/lifeart/gto-js">gto-js</a></h3>
+            <h3><a href="https://github.com/lifeart/gto-js" target="_blank" rel="noopener noreferrer">gto-js</a></h3>
             <p class="description">Parse and render Open RV files in JavaScript. VFX pipeline meets web tech.</p>
-            <span class="tech">TypeScript, Binary Parsing, Gzip, Node Graphs</span>
+            <span class="tech">TypeScript, Binary Parsing, Gzip</span>
           </article>
           <article class="project-card">
             <span class="year">2026</span>
-            <h3><a href="https://github.com/lifeart/fla-viewer">fla-viewer</a></h3>
+            <h3><a href="https://github.com/lifeart/fla-viewer" target="_blank" rel="noopener noreferrer">fla-viewer</a></h3>
             <p class="description">View Adobe Flash source files. Preserve and explore legacy animations.</p>
-            <span class="tech">TypeScript, WebCodecs, Canvas 2D, Video Encoding</span>
+            <span class="tech">TypeScript, WebCodecs, Canvas 2D</span>
           </article>
         </div>
       </div>
     </section>
 
     <footer>
+      <p class="cta">Interested in working together? Let's talk.</p>
+      <a href="mailto:lifeart92@gmail.com" class="cta-button">Get in Touch</a>
       <div class="links">
-        <a href="https://github.com/lifeart">GitHub</a>
-        <a href="https://www.linkedin.com/in/ilifeart/">LinkedIn</a>
-        <a href="https://x.com/vaier">X</a>
+        <a href="https://github.com/lifeart" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a href="https://www.linkedin.com/in/ilifeart/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <a href="https://x.com/vaier" target="_blank" rel="noopener noreferrer">X</a>
       </div>
-      <p>2026 Alex Kanunnikov</p>
+      <p class="copyright">2026 Alex Kanunnikov</p>
     </footer>
   </div>
 </body>
