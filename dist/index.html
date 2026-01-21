@@ -301,10 +301,21 @@
       opacity: 1;
     }
 
+    .project-card .year {
+      position: absolute;
+      top: 0.75rem;
+      right: 0.75rem;
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      font-weight: 500;
+      opacity: 0.7;
+    }
+
     .project-card h3 {
       font-size: 0.95rem;
       font-weight: 600;
       margin-bottom: 0.5rem;
+      padding-right: 2.5rem;
     }
 
     .project-card h3 a {
@@ -320,13 +331,14 @@
       font-size: 0.85rem;
       color: var(--text-secondary);
       line-height: 1.5;
-      margin-bottom: 1rem;
+      margin-bottom: 0.75rem;
     }
 
     .project-card .tech {
-      font-size: 0.75rem;
+      font-size: 0.7rem;
       color: var(--text-muted);
       font-weight: 500;
+      line-height: 1.4;
     }
 
     /* Footer */
@@ -428,7 +440,7 @@
       <div class="social-links">
         <a href="https://github.com/lifeart">GitHub @lifeart</a>
         <a href="https://www.linkedin.com/in/ilifeart/">LinkedIn</a>
-        <a href="https://twitter.com/vaier">Twitter @vaier</a>
+        <a href="https://x.com/vaier">X @vaier</a>
       </div>
     </header>
 
@@ -490,16 +502,19 @@
         <h3 class="category-title">Framework Innovation</h3>
         <div class="projects-grid">
           <article class="project-card">
+            <span class="year">2023</span>
             <h3><a href="https://github.com/lifeart/glimmer-next">glimmer-next (GXT)</a></h3>
             <p class="description">Next-gen Glimmer VM runtime. 5x smaller bundle (7kb gzipped), same powerful templating.</p>
             <span class="tech">TypeScript, Vite, Tailwind, Playwright, SSR</span>
           </article>
           <article class="project-card">
+            <span class="year">2023</span>
             <h3><a href="https://github.com/lifeart/demo-ember-vite">demo-ember-vite</a></h3>
             <p class="description">Pioneered Ember.js on Vite. Instant HMR, modern DX, proving new build paradigms.</p>
             <span class="tech">Ember.js, Vite, TypeScript, Tailwind, Playwright</span>
           </article>
           <article class="project-card">
+            <span class="year">2020</span>
             <h3><a href="https://github.com/lifeart/glimmer-composition-api">glimmer-composition-api</a></h3>
             <p class="description">Bridging ecosystems: Vue's Composition API patterns for Glimmer/Ember developers.</p>
             <span class="tech">JavaScript, Ember CLI, Reactive Primitives</span>
@@ -511,16 +526,19 @@
         <h3 class="category-title">Developer Tools</h3>
         <div class="projects-grid">
           <article class="project-card">
+            <span class="year">2019</span>
             <h3><a href="https://github.com/lifeart/ember-language-server">ember-language-server</a></h3>
             <p class="description">Powering IDE intelligence for thousands of Ember developers. Autocomplete, go-to-definition, and more.</p>
             <span class="tech">TypeScript, LSP, Webpack, Jest, AST</span>
           </article>
           <article class="project-card">
+            <span class="year">2024</span>
             <h3><a href="https://github.com/lifeart/code2prompt">code2prompt</a></h3>
             <p class="description">Turn codebases into LLM-ready prompts. Ship AI features faster with structured context.</p>
             <span class="tech">TypeScript, Vite, Tailwind, GitHub API</span>
           </article>
           <article class="project-card">
+            <span class="year">2016</span>
             <h3><a href="https://github.com/ember-template-lint/ember-template-lint">ember-template-lint</a></h3>
             <p class="description">Core contributor to the official Ember template linter. Catching bugs before they ship.</p>
             <span class="tech">JavaScript, AST, Template Parsing</span>
@@ -532,26 +550,31 @@
         <h3 class="category-title">Ember.js Addons</h3>
         <div class="projects-grid">
           <article class="project-card">
+            <span class="year">2019</span>
             <h3><a href="https://github.com/lifeart/ember-ref-modifier">ember-ref-modifier</a></h3>
             <p class="description">React-style refs for Ember. Direct DOM access with a familiar, intuitive API.</p>
             <span class="tech">JavaScript, Ember Modifiers, DOM API</span>
           </article>
           <article class="project-card">
+            <span class="year">2020</span>
             <h3><a href="https://github.com/lifeart/ember-click-outside-modifier">ember-click-outside-modifier</a></h3>
             <p class="description">Detect clicks outside elements. Essential for modals, dropdowns, and popovers.</p>
             <span class="tech">TypeScript, Embroider, Glint, GTS</span>
           </article>
           <article class="project-card">
+            <span class="year">2019</span>
             <h3><a href="https://github.com/lifeart/ember-cli-jsx-templates">ember-cli-jsx-templates</a></h3>
             <p class="description">Write Ember templates in TSX/JSX. Full type safety meets expressive templating.</p>
             <span class="tech">TypeScript, Broccoli, AST, JSX Transpilation</span>
           </article>
           <article class="project-card">
+            <span class="year">2018</span>
             <h3><a href="https://github.com/lifeart/ember-ast-hot-load">ember-ast-hot-load</a></h3>
             <p class="description">Hot reload everything: components, routes, helpers. No refresh, no lost state.</p>
             <span class="tech">JavaScript, AST Transformation, HMR</span>
           </article>
           <article class="project-card">
+            <span class="year">2020</span>
             <h3><a href="https://github.com/lifeart/ember-blurhash">ember-blurhash</a></h3>
             <p class="description">Beautiful image placeholders using BlurHash. Smooth loading, better UX.</p>
             <span class="tech">JavaScript, Canvas API, CSS Variables</span>
@@ -563,21 +586,25 @@
         <h3 class="category-title">Utilities & Libraries</h3>
         <div class="projects-grid">
           <article class="project-card">
+            <span class="year">2017</span>
             <h3><a href="https://github.com/lifeart/dom-snapshot">dom-snapshot</a></h3>
             <p class="description">Capture and restore DOM state as JSON. Perfect for testing, debugging, and time-travel.</p>
             <span class="tech">TypeScript, Babel, Firebase, DOM Serialization</span>
           </article>
           <article class="project-card">
+            <span class="year">2017</span>
             <h3><a href="https://github.com/lifeart/demo-async-dom">demo-async-dom</a></h3>
             <p class="description">Offload DOM operations to Web Workers. Experimental async rendering patterns.</p>
             <span class="tech">JavaScript, Web Workers, Performance</span>
           </article>
           <article class="project-card">
+            <span class="year">2023</span>
             <h3><a href="https://github.com/lifeart/sm-annotate">sm-annotate</a></h3>
             <p class="description">Vector-based annotation for video and images. Draw, markup, and collaborate.</p>
             <span class="tech">TypeScript, Vitest, FFmpeg WASM, Zero-deps</span>
           </article>
           <article class="project-card">
+            <span class="year">2025</span>
             <h3><a href="https://github.com/lifeart/revamp">revamp</a></h3>
             <p class="description">Proxy server for legacy browser support. Ship modern code everywhere.</p>
             <span class="tech">TypeScript, Babel, PostCSS, Sharp, Worker Pools</span>
@@ -589,16 +616,19 @@
         <h3 class="category-title">Media & Creative</h3>
         <div class="projects-grid">
           <article class="project-card">
+            <span class="year">2026</span>
             <h3><a href="https://github.com/lifeart/openrv-web">openrv-web</a></h3>
             <p class="description">Open RV player for the web. Professional media review in the browser.</p>
             <span class="tech">TypeScript, WebGL2, Canvas, Vite, Playwright</span>
           </article>
           <article class="project-card">
+            <span class="year">2026</span>
             <h3><a href="https://github.com/lifeart/gto-js">gto-js</a></h3>
             <p class="description">Parse and render Open RV files in JavaScript. VFX pipeline meets web tech.</p>
             <span class="tech">TypeScript, Binary Parsing, Gzip, Node Graphs</span>
           </article>
           <article class="project-card">
+            <span class="year">2026</span>
             <h3><a href="https://github.com/lifeart/fla-viewer">fla-viewer</a></h3>
             <p class="description">View Adobe Flash source files. Preserve and explore legacy animations.</p>
             <span class="tech">TypeScript, WebCodecs, Canvas 2D, Video Encoding</span>
@@ -611,7 +641,7 @@
       <div class="links">
         <a href="https://github.com/lifeart">GitHub</a>
         <a href="https://www.linkedin.com/in/ilifeart/">LinkedIn</a>
-        <a href="https://twitter.com/vaier">Twitter</a>
+        <a href="https://x.com/vaier">X</a>
       </div>
       <p>2026 Alex Kanunnikov</p>
     </footer>
