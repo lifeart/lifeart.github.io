@@ -1,25 +1,620 @@
-<html>
-  <head>
-    <meta name="yandex-verification" content="a626dfe67f8aa3ea" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
-    <link rel="manifest" href="/site.webmanifest" />
-  </head>
-  <body>
-    <h1>List of projects</h1>
-    <ul>
-      <li>
-        <a href="https://lifeart.github.io/code2prompt/">Code 2 Prompt</a>
-      </li>
-      <li><a href="https://lifeart.github.io/walk-calc/">Walk Calories</a></li>
-      <li><a href="https://lifeart.github.io/doc-hash/">Конструктор ИУЛ</a></li>
-      <li><a href="https://lifeart.github.io/ndfl-calc/">Калькулятор НДФЛ</a></li>
-    </ul>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Alex Kanunnikov - Staff Frontend Engineer, Ember.js Core Contributor. Building frameworks, compilers, and developer tools that power modern web applications.">
+  <meta name="yandex-verification" content="a626dfe67f8aa3ea">
+  <title>Alex Kanunnikov | Staff Frontend Engineer</title>
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <style>
+    :root {
+      --bg-primary: #0a0a0f;
+      --bg-secondary: #12121a;
+      --bg-card: #16161f;
+      --bg-card-hover: #1a1a25;
+      --text-primary: #f0f0f5;
+      --text-secondary: #9090a0;
+      --text-muted: #606070;
+      --accent: #6366f1;
+      --accent-light: #818cf8;
+      --accent-glow: rgba(99, 102, 241, 0.15);
+      --border: #25252f;
+      --border-hover: #35354a;
+      --success: #10b981;
+      --success-glow: rgba(16, 185, 129, 0.2);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: var(--bg-primary);
+      background-image:
+        radial-gradient(ellipse 80% 50% at 50% -20%, var(--accent-glow), transparent),
+        radial-gradient(ellipse 60% 40% at 100% 0%, rgba(99, 102, 241, 0.08), transparent);
+      color: var(--text-primary);
+      line-height: 1.7;
+      min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: var(--accent-light);
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+
+    a:hover {
+      color: var(--text-primary);
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 4rem 2rem;
+    }
+
+    /* Header */
+    .header {
+      padding-bottom: 3rem;
+      margin-bottom: 3rem;
+      border-bottom: 1px solid var(--border);
+      position: relative;
+    }
+
+    .header::after {
+      content: '';
+      position: absolute;
+      bottom: -1px;
+      left: 0;
+      width: 120px;
+      height: 2px;
+      background: linear-gradient(90deg, var(--accent), transparent);
+    }
+
+    .header h1 {
+      font-size: 2.75rem;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      margin-bottom: 0.5rem;
+      background: linear-gradient(135deg, var(--text-primary) 0%, var(--text-secondary) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .header .role {
+      font-size: 1.25rem;
+      color: var(--accent-light);
+      font-weight: 500;
+      margin-bottom: 0.75rem;
+    }
+
+    .header .tagline {
+      font-size: 1.05rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+      max-width: 600px;
+    }
+
+    .header .meta {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .location {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    .location::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      background: var(--text-muted);
+      border-radius: 50%;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: linear-gradient(135deg, var(--success), #059669);
+      color: #fff;
+      padding: 0.4rem 0.9rem;
+      border-radius: 2rem;
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      box-shadow: 0 0 20px var(--success-glow);
+    }
+
+    .badge::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      background: #fff;
+      border-radius: 50%;
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.5; }
+    }
+
+    .social-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+    }
+
+    .social-links a {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+      padding: 0.5rem 0;
+      border-bottom: 1px solid transparent;
+      transition: all 0.2s ease;
+    }
+
+    .social-links a:hover {
+      color: var(--accent-light);
+      border-bottom-color: var(--accent-light);
+    }
+
+    /* Skills */
+    .skills {
+      margin-bottom: 3rem;
+    }
+
+    .section-label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+    }
+
+    .skill-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+    }
+
+    .skill-tag {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border);
+      padding: 0.5rem 1rem;
+      border-radius: 0.5rem;
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      transition: all 0.2s ease;
+    }
+
+    .skill-tag:hover {
+      border-color: var(--border-hover);
+      color: var(--text-primary);
+    }
+
+    .skill-tag.primary {
+      background: var(--accent-glow);
+      border-color: rgba(99, 102, 241, 0.3);
+      color: var(--accent-light);
+    }
+
+    .skill-tag.primary:hover {
+      border-color: var(--accent);
+      background: rgba(99, 102, 241, 0.2);
+    }
+
+    /* Projects */
+    .projects-section {
+      margin-bottom: 3rem;
+    }
+
+    .section-title {
+      font-size: 1.5rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      margin-bottom: 2rem;
+      color: var(--text-primary);
+    }
+
+    .category {
+      margin-bottom: 2.5rem;
+    }
+
+    .category:last-child {
+      margin-bottom: 0;
+    }
+
+    .category-title {
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+      padding-left: 0.5rem;
+      border-left: 2px solid var(--accent);
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 1rem;
+    }
+
+    .project-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 0.75rem;
+      padding: 1.25rem;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .project-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--accent-glow), transparent);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .project-card:hover {
+      background: var(--bg-card-hover);
+      border-color: var(--border-hover);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+    }
+
+    .project-card:hover::before {
+      opacity: 1;
+    }
+
+    .project-card h3 {
+      font-size: 0.95rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    .project-card h3 a {
+      color: var(--text-primary);
+      transition: color 0.2s ease;
+    }
+
+    .project-card h3 a:hover {
+      color: var(--accent-light);
+    }
+
+    .project-card .description {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      line-height: 1.5;
+      margin-bottom: 1rem;
+    }
+
+    .project-card .tech {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding-top: 3rem;
+      border-top: 1px solid var(--border);
+      color: var(--text-muted);
+      font-size: 0.85rem;
+    }
+
+    footer .links {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin-bottom: 1.5rem;
+    }
+
+    footer .links a {
+      color: var(--text-secondary);
+      transition: color 0.2s ease;
+    }
+
+    footer .links a:hover {
+      color: var(--accent-light);
+    }
+
+    footer p {
+      color: var(--text-muted);
+    }
+
+    /* Print styles */
+    @media print {
+      :root {
+        --bg-primary: #fff;
+        --bg-secondary: #f8f9fa;
+        --bg-card: #fff;
+        --text-primary: #1a1a2e;
+        --text-secondary: #4a4a5a;
+        --text-muted: #7a7a8a;
+        --accent: #4f46e5;
+        --border: #e5e5ea;
+      }
+
+      body {
+        background: #fff;
+        font-size: 11pt;
+      }
+
+      .project-card {
+        break-inside: avoid;
+        box-shadow: none;
+        border: 1px solid var(--border);
+      }
+
+      .badge {
+        box-shadow: none;
+      }
+    }
+
+    /* Mobile */
+    @media (max-width: 640px) {
+      .container {
+        padding: 2rem 1.25rem;
+      }
+
+      .header h1 {
+        font-size: 2rem;
+      }
+
+      .header .role {
+        font-size: 1rem;
+      }
+
+      .projects-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .social-links {
+        gap: 1rem;
+      }
+
+      footer .links {
+        gap: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <h1>Alex Kanunnikov</h1>
+      <p class="role">Staff Frontend Engineer</p>
+      <p class="tagline">Building the future of Ember.js. Framework architect, compiler enthusiast, and open source maintainer with 10+ years shipping products at Fortune 500 companies. From startups to enterprise scale.</p>
+      <div class="meta">
+        <span class="location">Remote / Nomad</span>
+        <span class="badge">Available for hire</span>
+      </div>
+      <div class="social-links">
+        <a href="https://github.com/lifeart">GitHub @lifeart</a>
+        <a href="https://www.linkedin.com/in/ilifeart/">LinkedIn</a>
+        <a href="https://twitter.com/vaier">Twitter @vaier</a>
+      </div>
+    </header>
+
+    <section class="skills">
+      <h2 class="section-label">Core Skills</h2>
+      <div class="skill-tags">
+        <span class="skill-tag primary">TypeScript</span>
+        <span class="skill-tag primary">JavaScript</span>
+        <span class="skill-tag primary">Ember.js</span>
+        <span class="skill-tag primary">Glimmer</span>
+        <span class="skill-tag primary">Node.js</span>
+        <span class="skill-tag">React</span>
+        <span class="skill-tag">Vue</span>
+      </div>
+    </section>
+
+    <section class="skills">
+      <h2 class="section-label">Build Tools & DX</h2>
+      <div class="skill-tags">
+        <span class="skill-tag">Vite</span>
+        <span class="skill-tag">Webpack</span>
+        <span class="skill-tag">Babel</span>
+        <span class="skill-tag">PostCSS</span>
+        <span class="skill-tag">Tailwind CSS</span>
+        <span class="skill-tag">ESLint</span>
+        <span class="skill-tag">LSP</span>
+        <span class="skill-tag">Hot Module Reloading</span>
+      </div>
+    </section>
+
+    <section class="skills">
+      <h2 class="section-label">Specialized</h2>
+      <div class="skill-tags">
+        <span class="skill-tag">AST Transformation</span>
+        <span class="skill-tag">Compiler Development</span>
+        <span class="skill-tag">WebGL</span>
+        <span class="skill-tag">Canvas API</span>
+        <span class="skill-tag">Web Workers</span>
+        <span class="skill-tag">WebCodecs</span>
+        <span class="skill-tag">Binary Parsing</span>
+        <span class="skill-tag">FFmpeg</span>
+      </div>
+    </section>
+
+    <section class="skills">
+      <h2 class="section-label">Testing</h2>
+      <div class="skill-tags">
+        <span class="skill-tag">Jest</span>
+        <span class="skill-tag">Vitest</span>
+        <span class="skill-tag">Playwright</span>
+        <span class="skill-tag">QUnit</span>
+      </div>
+    </section>
+
+    <section class="projects-section">
+      <h2 class="section-title">Projects</h2>
+
+      <div class="category">
+        <h3 class="category-title">Framework Innovation</h3>
+        <div class="projects-grid">
+          <article class="project-card">
+            <h3><a href="https://github.com/lifeart/glimmer-next">glimmer-next (GXT)</a></h3>
+            <p class="description">Next-gen Glimmer VM runtime. 5x smaller bundle (7kb gzipped), same powerful templating.</p>
+            <span class="tech">TypeScript, Vite, Tailwind, Playwright, SSR</span>
+          </article>
+          <article class="project-card">
+            <h3><a href="https://github.com/lifeart/demo-ember-vite">demo-ember-vite</a></h3>
+            <p class="description">Pioneered Ember.js on Vite. Instant HMR, modern DX, proving new build paradigms.</p>
+            <span class="tech">Ember.js, Vite, TypeScript, Tailwind, Playwright</span>
+          </article>
+          <article class="project-card">
+            <h3><a href="https://github.com/lifeart/glimmer-composition-api">glimmer-composition-api</a></h3>
+            <p class="description">Bridging ecosystems: Vue's Composition API patterns for Glimmer/Ember developers.</p>
+            <span class="tech">JavaScript, Ember CLI, Reactive Primitives</span>
+          </article>
+        </div>
+      </div>
+
+      <div class="category">
+        <h3 class="category-title">Developer Tools</h3>
+        <div class="projects-grid">
+          <article class="project-card">
+            <h3><a href="https://github.com/lifeart/ember-language-server">ember-language-server</a></h3>
+            <p class="description">Powering IDE intelligence for thousands of Ember developers. Autocomplete, go-to-definition, and more.</p>
+            <span class="tech">TypeScript, LSP, Webpack, Jest, AST</span>
+          </article>
+          <article class="project-card">
+            <h3><a href="https://github.com/lifeart/code2prompt">code2prompt</a></h3>
+            <p class="description">Turn codebases into LLM-ready prompts. Ship AI features faster with structured context.</p>
+            <span class="tech">TypeScript, Vite, Tailwind, GitHub API</span>
+          </article>
+          <article class="project-card">
+            <h3><a href="https://github.com/ember-template-lint/ember-template-lint">ember-template-lint</a></h3>
+            <p class="description">Core contributor to the official Ember template linter. Catching bugs before they ship.</p>
+            <span class="tech">JavaScript, AST, Template Parsing</span>
+          </article>
+        </div>
+      </div>
+
+      <div class="category">
+        <h3 class="category-title">Ember.js Addons</h3>
+        <div class="projects-grid">
+          <article class="project-card">
+            <h3><a href="https://github.com/lifeart/ember-ref-modifier">ember-ref-modifier</a></h3>
+            <p class="description">React-style refs for Ember. Direct DOM access with a familiar, intuitive API.</p>
+            <span class="tech">JavaScript, Ember Modifiers, DOM API</span>
+          </article>
+          <article class="project-card">
+            <h3><a href="https://github.com/lifeart/ember-click-outside-modifier">ember-click-outside-modifier</a></h3>
+            <p class="description">Detect clicks outside elements. Essential for modals, dropdowns, and popovers.</p>
+            <span class="tech">TypeScript, Embroider, Glint, GTS</span>
+          </article>
+          <article class="project-card">
+            <h3><a href="https://github.com/lifeart/ember-cli-jsx-templates">ember-cli-jsx-templates</a></h3>
+            <p class="description">Write Ember templates in TSX/JSX. Full type safety meets expressive templating.</p>
+            <span class="tech">TypeScript, Broccoli, AST, JSX Transpilation</span>
+          </article>
+          <article class="project-card">
+            <h3><a href="https://github.com/lifeart/ember-ast-hot-load">ember-ast-hot-load</a></h3>
+            <p class="description">Hot reload everything: components, routes, helpers. No refresh, no lost state.</p>
+            <span class="tech">JavaScript, AST Transformation, HMR</span>
+          </article>
+          <article class="project-card">
+            <h3><a href="https://github.com/lifeart/ember-blurhash">ember-blurhash</a></h3>
+            <p class="description">Beautiful image placeholders using BlurHash. Smooth loading, better UX.</p>
+            <span class="tech">JavaScript, Canvas API, CSS Variables</span>
+          </article>
+        </div>
+      </div>
+
+      <div class="category">
+        <h3 class="category-title">Utilities & Libraries</h3>
+        <div class="projects-grid">
+          <article class="project-card">
+            <h3><a href="https://github.com/lifeart/dom-snapshot">dom-snapshot</a></h3>
+            <p class="description">Capture and restore DOM state as JSON. Perfect for testing, debugging, and time-travel.</p>
+            <span class="tech">TypeScript, Babel, Firebase, DOM Serialization</span>
+          </article>
+          <article class="project-card">
+            <h3><a href="https://github.com/lifeart/demo-async-dom">demo-async-dom</a></h3>
+            <p class="description">Offload DOM operations to Web Workers. Experimental async rendering patterns.</p>
+            <span class="tech">JavaScript, Web Workers, Performance</span>
+          </article>
+          <article class="project-card">
+            <h3><a href="https://github.com/lifeart/sm-annotate">sm-annotate</a></h3>
+            <p class="description">Vector-based annotation for video and images. Draw, markup, and collaborate.</p>
+            <span class="tech">TypeScript, Vitest, FFmpeg WASM, Zero-deps</span>
+          </article>
+          <article class="project-card">
+            <h3><a href="https://github.com/lifeart/revamp">revamp</a></h3>
+            <p class="description">Proxy server for legacy browser support. Ship modern code everywhere.</p>
+            <span class="tech">TypeScript, Babel, PostCSS, Sharp, Worker Pools</span>
+          </article>
+        </div>
+      </div>
+
+      <div class="category">
+        <h3 class="category-title">Media & Creative</h3>
+        <div class="projects-grid">
+          <article class="project-card">
+            <h3><a href="https://github.com/lifeart/openrv-web">openrv-web</a></h3>
+            <p class="description">Open RV player for the web. Professional media review in the browser.</p>
+            <span class="tech">TypeScript, WebGL2, Canvas, Vite, Playwright</span>
+          </article>
+          <article class="project-card">
+            <h3><a href="https://github.com/lifeart/gto-js">gto-js</a></h3>
+            <p class="description">Parse and render Open RV files in JavaScript. VFX pipeline meets web tech.</p>
+            <span class="tech">TypeScript, Binary Parsing, Gzip, Node Graphs</span>
+          </article>
+          <article class="project-card">
+            <h3><a href="https://github.com/lifeart/fla-viewer">fla-viewer</a></h3>
+            <p class="description">View Adobe Flash source files. Preserve and explore legacy animations.</p>
+            <span class="tech">TypeScript, WebCodecs, Canvas 2D, Video Encoding</span>
+          </article>
+        </div>
+      </div>
+    </section>
+
     <footer>
-        <footer><p class="text-center text-xs text-gray-500">
-            Check on
-            <a href="https://github.com/lifeart/" class="text-blue-500">GitHub</a></p></footer>
+      <div class="links">
+        <a href="https://github.com/lifeart">GitHub</a>
+        <a href="https://www.linkedin.com/in/ilifeart/">LinkedIn</a>
+        <a href="https://twitter.com/vaier">Twitter</a>
+      </div>
+      <p>2026 Alex Kanunnikov</p>
     </footer>
-  </body>
+  </div>
+</body>
 </html>
